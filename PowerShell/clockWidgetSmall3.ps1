@@ -78,7 +78,7 @@ $Runspacehash.Handle = $Runspacehash.psCmd.AddScript({
     $Clockhash.ampm_txtbx.text = $AMPM
     $Clockhash.day_n_txtbx.text = $Day_n
     $Clockhash.month_txtbx.text = $Month
-    $Clockhash.year_txtbx.text = $year
+#   $Clockhash.year_txtbx.text = $year
 }
 
 [xml]$xaml = @"
@@ -94,6 +94,7 @@ $Runspacehash.Handle = $Runspacehash.psCmd.AddScript({
 		</Style>
     </Grid.Resources>
         <Grid.RowDefinitions>
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -125,18 +126,32 @@ $Runspacehash.Handle = $Runspacehash.psCmd.AddScript({
                             <DropShadowEffect Color="Black" ShadowDepth="1" BlurRadius="2" />
                         </TextBlock.Effect>
                 </TextBlock>
+				<!--
                 <TextBlock x:Name="day_txtbx" FontSize="12"  Foreground="$($Clockhash.TimeColor)"  >
                         <TextBlock.Effect>
                             <DropShadowEffect Color="Black" ShadowDepth="1" BlurRadius="2" />
                         </TextBlock.Effect>
                 </TextBlock>
+				-->
             </StackPanel>
+			<!--
             <TextBlock x:Name="year_txtbx" FontSize="12"  Foreground="$($Clockhash.TimeColor)" Margin="0"  >
                     <TextBlock.Effect>
                         <DropShadowEffect Color="Black" ShadowDepth="1" BlurRadius="2" />
                     </TextBlock.Effect>
             </TextBlock>
+			-->
         </StackPanel>
+
+		<!-- Row 2 -->
+		<StackPanel Grid.Row="2">
+                <TextBlock x:Name="day_txtbx" FontSize="12"  Foreground="$($Clockhash.TimeColor)"  >
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Black" ShadowDepth="1" BlurRadius="2" />
+                        </TextBlock.Effect>
+                </TextBlock>
+		</StackPanel>
+
     </Grid>
 </Window>
 "@
@@ -148,7 +163,7 @@ $Clockhash.time_txtbox = $Clockhash.window.FindName("time_txtbox")
 $Clockhash.ampm_txtbx = $Clockhash.Window.FindName("ampm_txtbx")
 $Clockhash.day_n_txtbx = $Clockhash.Window.FindName("day_n_txtbx")
 $Clockhash.month_txtbx = $Clockhash.Window.FindName("month_txtbx")
-$Clockhash.year_txtbx = $Clockhash.Window.FindName("year_txtbx")
+# $Clockhash.year_txtbx = $Clockhash.Window.FindName("year_txtbx")
 $Clockhash.day_txtbx = $Clockhash.Window.FindName("day_txtbx")
 
 #Timer Event
@@ -187,9 +202,9 @@ $Clockhash.month_txtbx.Add_SizeChanged({
     # [int]$Adjustment = $clockhash.length + 52 + 4 #Hard coded margin plus white space
     [int]$Adjustment = $clockhash.length + 4 + 4 #Hard coded margin plus white space
 
-#   $YearMargin = $Clockhash.year_txtbx.Margin
-#   $Clockhash.year_txtbx.Margin = ("{0},{1},{2},{3}" -f ($Adjustment),
-#       $YearMargin.Top,$YearMargin.Right,$YearMargin.Bottom)
+# $YearMargin = $Clockhash.year_txtbx.Margin
+# $Clockhash.year_txtbx.Margin = ("{0},{1},{2},{3}" -f ($Adjustment),
+#     $YearMargin.Top,$YearMargin.Right,$YearMargin.Bottom)
 
 })
 $Clockhash.time_txtbox.Add_SizeChanged({
