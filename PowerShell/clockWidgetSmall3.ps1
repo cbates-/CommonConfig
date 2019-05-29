@@ -71,7 +71,10 @@ $Runspacehash.psCmd.Runspace = $Runspacehash.runspace
 $Runspacehash.Handle = $Runspacehash.psCmd.AddScript({
 
  $Script:Update = {
+    $abbrev = Get-Date -f "dddd"
+    $abbrev = $abbrev.Substring(0,3)
     $day,$Month, $Day_n, $Year, $Time, $AMPM = (Get-Date -f "dddd,MMMM,dd,yyyy,hh:mm,tt") -Split ','
+	$day = $abbrev
 
     $Clockhash.time_txtbox.text = $Time.TrimStart("0")
     $Clockhash.day_txtbx.Text = $day
