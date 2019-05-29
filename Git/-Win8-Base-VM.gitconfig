@@ -1,0 +1,21 @@
+[user]
+	name = C. Bates
+	email = ccbates@gmail.com
+[core]
+	autocrlf = true
+	safecrlf = true
+    editor = 'C:/Program Files (x86)/vim/vim73/gvim.exe' 
+
+[gui]
+	recentrepo = I:/Work/Assembla/genfile
+[alias]
+	stat = status
+    lga = log --graph --oneline --all --decorate
+	# lg = log --pretty=format:'%C(cyan)%h%Creset -%C(yellow bold)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
+    lg = log --graph --oneline --decorate
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+
+[help]
+	autocorrect = 0

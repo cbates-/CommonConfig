@@ -1,0 +1,71 @@
+set-executionpolicy remotesigned
+$env:path += ";C:\Program Files (x86)\Vim\vim73;"
+#
+#
+# Save/restore history and last dir in/from $Env:APPDATA\PowerShell
+# From:  http://www.vistax64.com/powershell/9678-bash-like-history-save-restore-other-goodies.html 
+#
+$commandTempFile = [System.IO.Path]::GetTempFileName()
+$global:lastCommandId = 0
+$PSAppData = Join-Path $Env:APPDATA "PowerShell"
+$historyFile = Join-Path $PSAppData "History.csv"
+$lastDirFile = Join-Path $PSAppData "LastDir.ini"
+
+if (!(Test-Path $PSAppData -PathType Container)) {
+New-Item $PSAppData -ItemType Directory | Out-Null
+}
+
+if (Test-path $historyFile) {
+Import-CSV $historyFile | Add-History
+$global:lastCommandId = (Get-History | Select-Object -last 1).Id
+}
+
+function saveCommand {
+$currentCommand = (Get-History | Select-Object -last 1)
+if (($currentCommand.Id -eq $global:lastCommandId) -or ($currentCommand
+-eq $Null)) {
+return
+}
+$global:lastCommandId = $currentCommand.Id
+$currentCommand | Export-CSV $commandTempFile
+if (Test-path $historyFile) {
+$content = Get-Content $commandTempFile
+$lines = ($content | Measure-Object -Line).Lines - 2
+($content | Select-Object -last $lines) | Out-File $historyFile
+-Encoding ascii -Append
+} else {
+Copy-Item $commandTempFile $historyFile
+}
+}
+
+function q {
+Remove-Item $commandTempFile
+exit
+}
+
+function prompt {
+saveCommand
+(Get-Location).Path | Out-File $lastDirFile
+"
+$(Get-Location)
+> "
+}
+
+if (Test-Path $lastDirFile) {
+$LastDir = Get-Content $lastDirFile
+if (Test-Path $LastDir) {
+Set-Location $LastDir
+}
+}
+
+#
+# Apropos - search help Synopsis header for keywords
+#
+function apropos {
+$descr = Get-Help *
+foreach ($ag in $args) {
+$descr = $descr | Where {$_.Synopsis -like "*${ag}*"}
+}
+$descr | Format-Table -Auto
+}
+

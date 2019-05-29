@@ -1,0 +1,1 @@
+@{ComputerName=V-7-32-HXCHBA; TaskName=Calibration Loader; TaskFolder=\Microsoft\Windows\WindowsColorSystem; IsEnabled=False; LastRunTime=7/14/2009 12:54:01 AM; NextRunTime=12/30/1899 12:00:00 AM}

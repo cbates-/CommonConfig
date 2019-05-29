@@ -1,0 +1,38 @@
+From:  http://blogs.msdn.com/b/powershell/archive/2010/02/10/viewing-junctions-with-dir.aspx
+
+Viewing Junctions with ‘dir’
+
+PowerShell Team 9 Feb 2010 5:18 PM 7
+One feature of the NTFS file system is the junction, which is similar to a short cut but works at the file system level. This lets you link one directory to another. There’s a tool called ‘junction’ available here that lets you manipulate junctions.
+
+When listing the contents of a directory, by default PowerShell doesn’t tell you which sub-directories are junctions. I wanted to be able to tell which ones were junctions when doing a ‘dir’.
+
+The way I did that was to copy the built in file system formatting file, modify it so that junctions are indicated, then load it with Update-FormatData:
+
+The file system formatting rules are in $pshome\FileSystem.Format.ps1xml. I copied this, then in the element [ViewDefinitions –> View –> TableControl –> TableRowEntries –> TableRowEntry –> TableColumnItems –> TableColumnItem] I changed the content of PropertyName with value of ‘Mode’ to the following:
+
+ <ScriptBlock> 
+
+    "$($_.Mode)$(if($_.Attributes -band [IO.FileAttributes]::ReparsePoint) {'J'})"
+ </ScriptBlock> 
+This does a bitwise AND on the DirectoryInfo object Attributes property ($_.Attributes) against the .Net System.IO.FileAttributes.ReparsePoint enum value. If the result is not zero, it displays a ‘J’ next to the other file mode attributes.
+Next, load the new formatting file like this:
+
+PS> Update-FormatData -PrependPath myFilesystem.format.ps1xml
+
+The PrependPath parameter ensures that the new formatting file is loaded before the built-in formatting files.
+
+Let’s see what the output looks like:
+
+PS> dir
+
+    Directory: C:\tmp
+
+
+Mode                LastWriteTime     Length Name
+----                -------------     ------ ----
+d----J         2/9/2010   3:51 PM            alink
+d----          2/9/2010   3:51 PM            notAlink
+
+Directory alink has a ‘J’ in the mode column, seems to work!
+cheers, Nigel Sharples [MSFT]

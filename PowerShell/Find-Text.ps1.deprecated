@@ -1,0 +1,66 @@
+﻿# Moved to CBUtil
+function Find-Text { 
+    param( 
+            [Parameter(Mandatory=$true)]
+            $text,
+
+            [Parameter(Mandatory=$false)]
+            $fn="*",
+
+            [Parameter(Mandatory=$false)]
+            $Recurse=$false
+<#           
+            [Parameter(Mandatory=$false)]
+            $fnOnly=$false,
+#>
+         )
+        # $reply = read-host "Search recursively? (y/n)"
+        # $Recurse = ($reply -eq "y")
+        Write-Host "Recurse : $Recurse"
+
+        $s =  [string]::Format("Text: {0}  fn: {1}, recurse: {2}", $text, $fn, $Recurse)
+        Write-Host $s -ForegroundColor Yellow
+
+        # Select-String -Path E:\Data\PSExtras\*.ps1 -Pattern 'write-host' -List | select filename, line Unique
+
+        if($Recurse) {
+            # Write-Host "Searching recursively"
+            Get-ChildItem -File -Recurse -Filter $fn | Select-String $text
+            # Select-String -Path $pwd -Include $fn -Pattern $text -List | select filename, line -Unique
+            # $dirs = Get-ChildItem -Directory -Recurse 
+            # foreach ($d in $dirs) {
+                # $p = Join-Path $d.FullName $fn;
+                # $s = Select-String -Path $p -Pattern $text -List | select filename, line -Unique
+
+                # if([string]::IsNullOrEmpty($s) -eq $false) {
+                    # $d.FullName;
+                    # $s;
+                # }
+            # }
+        }
+        else {
+            Write-Host "NOT searching recursively"
+            # Get-ChildItem -Path $fn | Select-String $text
+            Select-String -Path $fn -Pattern $text -List | select filename, line -Unique
+        }
+<#
+    .SYSNOPSIS
+        - Find specified text in files
+        - Choose to search recursively or not
+
+    .DESCRIPTION
+        - Find specified text in files with date.
+
+    .PARAMETER Text
+        The text to search for
+
+    .PARAMETER fn
+        filespec to search, wildcards ok
+
+    .NOTES
+
+    .EXAMPLE
+
+#>
+}
+Set-Alias findtext Find-Text

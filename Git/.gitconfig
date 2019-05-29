@@ -1,0 +1,28 @@
+[user]
+	name = C. Bates
+	email = ccbates@gmail.com
+
+[include]
+	path = "c:/users/charles/onedrive/commonConfig/git"
+    ;path = ./dropbox/skydrive/git/commonConfig
+
+[core]
+	autocrlf = true
+
+
+# Will these override what is in the commonConfig?  I hope so.
+[difftool]
+   prompt = false
+
+[difftool "bc4"]
+   cmd = \"C:/Users/Charles.Bates/AppData/Local/Beyond Compare 4/BCompare.exe\" "$LOCAL" "$REMOTE"
+
+[diff]
+   tool = bc4
+
+[merge]
+tool = bc4
+
+[alias]
+	st = status
+	stat = status

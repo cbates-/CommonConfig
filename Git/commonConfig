@@ -1,0 +1,94 @@
+
+[core]
+	autocrlf = true
+	safecrlf = false
+
+    editor = 'C:/Program Files (x86)/Vim/vim81/gvim.exe' 
+	excludesfile = %_CommonConfig%/git/.gitignore
+
+[gui]
+	recentrepo = I:/Work/Assembla/genfile
+
+[alias]
+	alias = config --get-regexp ^alias\\.
+	# lg = log --pretty=format:'%C(cyan)%h%Creset -%C(yellow bold)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
+    dump = cat-file -p
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'lga = log --graph --oneline --all --decorate
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg3 = log --graph --oneline --decorate --since='3 days ago' 
+    lg7 = log --graph --oneline --decorate --since='7 days ago' 
+    lga = log --graph --oneline --all --decorate 
+    lga7 = log --graph --oneline --all --decorate --since='7 days ago' 
+    stat = status
+    type = cat-file -t
+	undo-commit = reset --soft HEAD^
+
+
+[color]
+	ui = auto
+
+[color "status"]
+	changed = yellow
+	added = green
+	untracked = cyan
+
+[help]
+	autocorrect = 2
+
+[merge]
+	conflictstyle = diff3
+
+[credential]
+	helper = store
+
+# CodeCompare setup copied from 
+# https://www.devart.com/codecompare/integration_git.html
+# [difftool "codecompare"]
+#     cmd = 'C:\\Program Files\\Devart\\Code Compare\\codecompare.exe' -W \"$LOCAL\" \"$REMOTE\" 
+#     renames = true
+#  
+# [diff]
+#     tool = codecompare
+#     guitool = codecompare
+#  
+# [mergetool "codecompare"]
+#     cmd = 'C:\\Program Files\\Devart\\Code Compare\\codemerge.exe' -MF=\"$LOCAL\" -TF=\"$REMOTE\" -BF=\"$BASE\" -RF=\"$MERGED\" 
+#     trustExitCode = true
+#  
+# [mergetool]
+#     keepBackup = false
+#  
+# [merge]
+#     tool = codecompare
+#     guitool = codecompare
+# 
+# [push]
+# 	default = matching
+
+# BeyondCompare
+[difftool "beyondcompare"]
+    cmd = 'C:\\Program Files\\Beyond Compare 4\\Bcompare.exe' -W \"$LOCAL\" \"$REMOTE\" 
+    renames = true
+	prompt = false
+ 
+[diff]
+    tool = beyondcompare
+    guitool = beyondcompare
+ 
+[mergetool "beyondcompare"]
+    cmd = 'C:\\Program Files\\Beyond Compare 4\\Bcompare.exe' -MF=\"$LOCAL\" -TF=\"$REMOTE\" -BF=\"$BASE\" -RF=\"$MERGED\" 
+    trustExitCode = true
+ 
+[mergetool]
+    keepBackup = false
+ 
+[merge]
+    tool = beyondcompare
+    guitool = beyondcompare
+[push]
+	default = matching
+
+[difftool]
+    prompt = false
+

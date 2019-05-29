@@ -1,0 +1,23 @@
+# gci | sort CreationTime | select creationtime,name,length
+# get-childitem | sort-object creationtime | select CreationTime, length, name | format-table -autosize
+
+
+# PowerShell testbed.  Example of the -f format output
+# First number in each pair specifies column, second number specifies alignment.
+# '-' indicates left-align.
+# $dirs = get-childitem | sort-object creationtime
+# foreach ($d in $dirs) { "{0,-28} {1,-20} {2,8}" -f $d.CreationTime, $d.length, $d.name }
+
+# formats the CreationTime as date-only
+# foreach ($d in $dirs) { "{0:d} {1,-16} {2,8}" -f $d.CreationTime, $d.length, $d.name }
+
+
+# This looks like desired result.
+function lsd { param ($p = ".")
+    write-host $p -foregroundcolor yellow
+    gci -Path $p | sort CreationTime | select Mode, CreationTime,Name,Length | `
+        format-table Mode, `
+        @{n="CreationDate";e={"{0:d}" -f $_.CreationTime}}, Length, Name -autosize
+}
+
+
