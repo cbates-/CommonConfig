@@ -522,12 +522,12 @@ function sky {
 # [System.Windows.Forms.MessageBox]::Show("Use 'Bye' instead of 'Exit' to save command history." , "PowerShell Reminder")
 #
 #
-#function bye {   
+#function bye {
 #    Get-History -Count 50 |Export-CSV ~\PowerShell\history.csv
 #    exit
 #}
 
-#if (Test-path ~\PowerShell\History.csv) {   
+#if (Test-path ~\PowerShell\History.csv) {
 #    Import-CSV ~\PowerShell\History.csv |Add-History
 #}
 
