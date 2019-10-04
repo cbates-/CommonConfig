@@ -1,5 +1,5 @@
 #
-# Last Modified:  2019 Apr 08 7:29:32 AM
+# Last Modified:  2019 Oct 04 11:19:25 AM
 #
 Set-StrictMode -Version Latest
 #
@@ -384,7 +384,7 @@ function gvimr {
 }
 
 Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
-Set-Alias code "C:\Users\c-bat\AppData\Local\Programs\Microsoft VS Code Insiders\Code - Insiders.exe"
+# Set-Alias code "C:\Users\cbate\AppData\Local\Programs\Microsoft VS Code"
 
 
 # This is used by my mods to Posh-git
