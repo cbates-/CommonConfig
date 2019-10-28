@@ -69,6 +69,35 @@ function LWD { param ($dir = ".")
   $host.ui.rawui.foregroundColor = $origFg  
 }
 
+function LWZ { param ($dir = ".")  
+  Set-StrictMode -Off
+    "`t`t`tSorted by Length"
+    "`t`t`t-----------------------"
+  $dirs = get-childitem -Path $dir | sort Length
+
+  $origFg = $host.ui.rawui.foregroundColor  
+
+    foreach ($Item in ($dirs))   
+    {  
+      Switch ($Item.Extension)   
+      {  
+        ".Exe" {$host.ui.rawui.foregroundColor = "Red"}  
+        ".cmd" {$host.ui.rawui.foregroundColor = "Green"}  
+        ".msh" {$host.ui.rawui.foregroundColor = "Cyan"}  
+        ".ps1" {$host.ui.rawui.foregroundColor = "Cyan"}  
+        ".vbs" {$host.ui.rawui.foregroundColor = "Cyan"}  
+        Default {$host.ui.rawui.foregroundColor = $origFg}  
+      }  
+      if ($item.PSIsContainer) {$host.ui.rawui.foregroundColor = "Yellow"}
+
+#      "{0:d} {1} {2, 12} {3, 48}" -f $Item.CreationTime, $Item.Mode, $Item.length, $Item.name
+        $j = $Item.Attributes | Select-String -SimpleMatch "ReparsePoint"
+        if ($j -ne $null) { $j = "J" } else { $j="" }
+        [String]::Format("{0,10}  {1,8}  {2,12} {3,2}  {4,18} {5}", $Item.LastWriteTime.ToString("d"), $Item.LastWriteTime.ToString("t"), $Item.Mode, $j, $Item.length, $Item.name)
+     }   
+  $host.ui.rawui.foregroundColor = $origFg  
+}
+
 # Sort by creation time
 function LSD { param ($dir = ".")  
 # Barks when trying to proces DirInfo, 'cuz DirInfo doesn't have a Length property.
