@@ -1,5 +1,5 @@
 #
-# Last Modified:  2019 Oct 04 11:19:25 AM
+# Last Modified:  2019 Oct 31 8:59:24 AM
 #
 Set-StrictMode -Version Latest
 #
@@ -83,7 +83,7 @@ $env:PSScriptRoot += "$prof\PowerShell\Modules"
 . $env:_CommonConfig\PowerShell\colorDir.ps1
 # . $env:_CommonConfig\PowerShell\dirMgr2.ps1
 . $env:_CommonConfig\PowerShell\set-clipboard.ps1
-. $env:_CommonConfig\PowerShell\Connect-Mstsc.ps1
+# . $env:_CommonConfig\PowerShell\Connect-Mstsc.ps1
 # Moved to CBUtil
 # . $env:_CommonConfig\PowerShell\Find-Text.ps1
 . $env:_CommonConfig\PowerShell\GetMostRecentFiles.ps1
@@ -510,12 +510,6 @@ function pushCurDir {
     Push-Location $p.ProviderPath
 }
 
-# CB's OneDrive location
-function sky {
-    pushCurDir
-    # $prof = [string]::Format("{0}\{1}", $env:USERPROFILE, "OneDrive");
-    Set-Location $env:_CommonConfig
-}
 #
 # [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 # Remind me about using 'bye'
