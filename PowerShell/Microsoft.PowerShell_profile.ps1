@@ -35,7 +35,7 @@ $env:PromptLength = 48;
 
 
 # Env vars for CBUtil module
-$env:Editor="C:\Program Files\Vim\vim81\gvim.exe"
+$env:Editor="C:\Program Files (x86)\Vim\vim81\gvim.exe"
 $env:EdParam="--remote-silent"
 # $env:CompareTool="C:\Program Files\Devart\Code Compare\codecompare.exe"
 $env:CompareTool="C:\Program Files\Beyond Compare 4\BCompare.exe"
@@ -64,6 +64,7 @@ switch ($host.Name) {
     }
 }
 
+Set-Alias "Code" "C:\Users\CB\AppData\Local\Programs\Microsoft VS Code\code.exe"
 
 #[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
 #
@@ -75,3 +76,9 @@ switch ($host.Name) {
 # Load Jump-Location profile
 # Import-Module 'C:\ProgramData\chocolatey\lib\Jump-Location\tools\Jump.Location.psd1'
 
+
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}

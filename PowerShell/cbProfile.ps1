@@ -1,5 +1,5 @@
 #
-# Last Modified:  2019 Oct 31 8:59:24 AM
+# Last Modified:  2019 Dec 18 12:57:04 PM
 #
 Set-StrictMode -Version Latest
 #
@@ -78,6 +78,7 @@ $env:PSScriptRoot += "$prof\PowerShell\Modules"
 
 
 
+# Problems with something in cbFilters with PowerShell Core 6.
 $verMajor = $PsVersionTable.PSVersion.Major
 Write-Host "Version: " $PsVersionTable.PSVersion
 if ($verMajor -lt 6) {
@@ -399,6 +400,7 @@ $env:PromptLength = 40
 
 # Load Jump-Location profile
 # Import-Module 'C:\Users\Charles\Documents\WindowsPowerShell\Jump-Location\Jump.Location.psd1'
+# Problems with something in Jump-Location with PowerShell Core 6.
 if ($verMajor -lt 6) {
 	Import-Module "$env:_CommonConfig\PowerShell\Modules\Jump-Location\Jump.Location.psd1"
 }
