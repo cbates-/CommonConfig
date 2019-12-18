@@ -77,7 +77,12 @@ if (($env:PSScriptRoot -ne $null) -and ($env:PSScriptRoot[$env:PSScriptRoot.Leng
 $env:PSScriptRoot += "$prof\PowerShell\Modules"
 
 
-. $env:_CommonConfig\PowerShell\cbFilters.ps1
+
+$verMajor = $PsVersionTable.PSVersion.Major
+Write-Host "Version: " $PsVersionTable.PSVersion
+if ($verMajor -lt 6) {
+	. $env:_CommonConfig\PowerShell\cbFilters.ps1
+}
 
 . $env:_CommonConfig\PowerShell\ShortenPath.ps1
 . $env:_CommonConfig\PowerShell\colorDir.ps1
@@ -394,7 +399,9 @@ $env:PromptLength = 40
 
 # Load Jump-Location profile
 # Import-Module 'C:\Users\Charles\Documents\WindowsPowerShell\Jump-Location\Jump.Location.psd1'
-Import-Module "$env:_CommonConfig\PowerShell\Modules\Jump-Location\Jump.Location.psd1"
+if ($verMajor -lt 6) {
+	Import-Module "$env:_CommonConfig\PowerShell\Modules\Jump-Location\Jump.Location.psd1"
+}
 
 # ---------- Functions ------------------------------
 
