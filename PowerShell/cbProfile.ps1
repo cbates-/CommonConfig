@@ -390,7 +390,7 @@ function gvimr {
 }
 
 Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
-# Set-Alias code "C:\Users\cbate\AppData\Local\Programs\Microsoft VS Code"
+Set-Alias code "C:\Users\cbate\AppData\Local\Programs\Microsoft VS Code"
 
 
 # This is used by my mods to Posh-git
@@ -520,19 +520,19 @@ function pushCurDir {
 }
 
 #
-# [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 # Remind me about using 'bye'
-# [System.Windows.Forms.MessageBox]::Show("Use 'Bye' instead of 'Exit' to save command history." , "PowerShell Reminder")
+[System.Windows.Forms.MessageBox]::Show("Use 'Bye' instead of 'Exit' to save command history." , "PowerShell Reminder")
 #
 #
-#function bye {
-#    Get-History -Count 50 |Export-CSV ~\PowerShell\history.csv
-#    exit
-#}
+function bye {
+   Get-History -Count 50 |Export-CSV ~\PowerShell\history.csv
+   exit
+}
 
-#if (Test-path ~\PowerShell\History.csv) {
-#    Import-CSV ~\PowerShell\History.csv |Add-History
-#}
+if (Test-path ~\PowerShell\History.csv) {
+    Import-CSV ~\PowerShell\History.csv |Add-History
+}
 
 <#
 #
