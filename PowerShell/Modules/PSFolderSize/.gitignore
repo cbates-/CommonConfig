@@ -1,0 +1,6 @@
+*.json
+*.csv
+*.xml
+.DS_Store
+/tests/artifacts/*xml
+/site

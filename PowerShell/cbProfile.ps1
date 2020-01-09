@@ -1,5 +1,5 @@
 #
-# Last Modified:  2019 Dec 18 12:57:04 PM
+# Last Modified:  2020 Jan 09 8:49:36 AM
 #
 Set-StrictMode -Version Latest
 #
@@ -64,6 +64,11 @@ if((($env:PSModulePath | Select-String "CommonConfig\\PowerShell\\Modules") -eq 
     }
     $env:PSModulePath += "$env:_CommonConfig\PowerShell\Modules"
 }
+
+Write-Host "Trying to load PSFolderSize_fork"
+Write-Host "CWD: " + $PWD.ProviderPath
+# Import-Module "..\PSFolderSize_fork\PSFolderSize\PSFolderSize.psd1"
+Import-Module "$env:_CommonConfig\PowerShell\Modules\PSFolderSize_fork\PSFolderSize"
 
 
 # ShowUI provides access to WPF things.  Used by my DirMgr.
@@ -479,6 +484,7 @@ function Test-ReparsePoint([string]$path) {
 
 function import-Pscx {
      # PowerShell Community Extensions
+	 Write-Host "Importing Pscx  community extensions module..."
      Import-Module Pscx
      $Pscx:Preferences['TextEditor'] = "gvim.exe"
 }

@@ -9,7 +9,7 @@
 #
 
 $fullPathIncFileName = $MyInvocation.MyCommand.Definition
-Write-Host "Reading $fullPathIncFileName" -Foreground Cyan
+Write-Host "**** Reading $fullPathIncFileName ****" -Foreground Cyan
 
 # For tags files - p:\tags
 # New-PSDrive -name P -psprovider FileSystem -root C:\Users\Charles\Documents\WindowsPowerShell\
@@ -39,6 +39,7 @@ $env:Editor="C:\Program Files (x86)\Vim\vim81\gvim.exe"
 $env:EdParam="--remote-silent"
 # $env:CompareTool="C:\Program Files\Devart\Code Compare\codecompare.exe"
 $env:CompareTool="C:\Program Files\Beyond Compare 4\BCompare.exe"
+#
 # $env:OneCommanderPath = "C:\bin\OneCommander\OneCommander.exe";
 $env:OneCommanderPathV2 = "C:\Users\Charles\AppData\Local\Apps\2.0\535ZG6L3.E92\E931E3BN.7HW\onec..tion_0000000000000000_0000.0005_bbddb2e9b3bc77fa\OneCommanderV2.exe"
 
@@ -64,7 +65,9 @@ switch ($host.Name) {
     }
 }
 
-Set-Alias "Code" "C:\Users\CB\AppData\Local\Programs\Microsoft VS Code\code.exe"
+# Updated from Slingshot 200109
+Set-Alias "Code" "C:\Users\cbate\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+# Set-Alias "Code" "C:\Users\CB\AppData\Local\Programs\Microsoft VS Code\code.exe"
 
 #[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
 #
