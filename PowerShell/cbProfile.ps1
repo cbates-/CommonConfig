@@ -1,5 +1,5 @@
 #
-# Last Modified:  2020 Jan 09 8:49:36 AM
+# Last Modified:  2020 Jan 09 9:01:05 AM
 #
 Set-StrictMode -Version Latest
 #
@@ -65,10 +65,10 @@ if((($env:PSModulePath | Select-String "CommonConfig\\PowerShell\\Modules") -eq 
     $env:PSModulePath += "$env:_CommonConfig\PowerShell\Modules"
 }
 
-Write-Host "Trying to load PSFolderSize_fork"
+Write-Host "Trying to load PSFolderSize"
 Write-Host "CWD: " + $PWD.ProviderPath
-# Import-Module "..\PSFolderSize_fork\PSFolderSize\PSFolderSize.psd1"
-Import-Module "$env:_CommonConfig\PowerShell\Modules\PSFolderSize_fork\PSFolderSize"
+# Import-Module "..\PSFolderSize\PSFolderSize\PSFolderSize.psd1"
+Import-Module "$env:_CommonConfig\PowerShell\Modules\PSFolderSize\PSFolderSize"
 
 
 # ShowUI provides access to WPF things.  Used by my DirMgr.
@@ -228,17 +228,17 @@ if (Test-path $PoshHistoryPath)
     Import-CliXml $PoshHistoryPath | Add-History
 }
 
-if (Test-path $PoshDirectoryPath)
-{
-    $cur = $pwd
-    Write-Host "Importing dirs..."
-    $dirs = Import-CliXml -Path $PoshDirectoryPath;
-    # $dirs
-    foreach($d in $dirs) {
-       Push-Location -Path $d;
-    }
-    Set-Location $cur
-}
+# if (Test-path $PoshDirectoryPath)
+# {
+#     $cur = $pwd
+#     Write-Host "Importing dirs..."
+#     $dirs = Import-CliXml -Path $PoshDirectoryPath;
+#     # $dirs
+#     foreach($d in $dirs) {
+#        Push-Location -Path $d;
+#     }
+#     Set-Location $cur
+# }
 
 function Clear-DirectoryStack {
     param ($stackName = $null)
@@ -528,7 +528,7 @@ function pushCurDir {
 #
 [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 # Remind me about using 'bye'
-[System.Windows.Forms.MessageBox]::Show("Use 'Bye' instead of 'Exit' to save command history." , "PowerShell Reminder")
+# [System.Windows.Forms.MessageBox]::Show("Use 'Bye' instead of 'Exit' to save command history." , "PowerShell Reminder")
 #
 #
 function bye {
