@@ -2,8 +2,9 @@
 [core]
 	autocrlf = true
 	safecrlf = false
-
-    editor = 'C:/Program Files/Vim/vim74/gvim.exe' 
+	# C:\Program Files (x86)\Vim\vim81
+        # editor = 'C:/Program Files/Vim/vim74/gvim.exe' 
+        editor = 'gvim.exe' 
 	excludesfile = %_CommonConfig%/git/.gitignore
 
 [gui]
