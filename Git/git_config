@@ -1,0 +1,35 @@
+[user]
+	name = CB
+	email = cbates@gmavt.net
+
+[include]
+	path = "c:/users/cbate/onedrive/commonConfig/git/gitCommonConfig"
+    ;path = ./dropbox/skydrive/git/commonConfig
+
+[core]
+	autocrlf = true
+
+
+# Will these override what is in the commonConfig?  I hope so.
+[difftool]
+   prompt = false
+
+[difftool "bc4"]
+   cmd = \"C:/Program Files/Beyond Compare 4/BCompare.exe\" "$LOCAL" "$REMOTE"
+
+[diff]
+   tool = bc4
+
+[merge]
+tool = bc4
+
+[alias]
+	st = status
+	stat = status
+[winUpdater]
+	recentlySeenVersion = 2.25.0.windows.1
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
