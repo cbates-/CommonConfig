@@ -409,6 +409,11 @@ $env:PromptLength = 40
 if ($verMajor -lt 6) {
 	Import-Module "$env:_CommonConfig\PowerShell\Modules\Jump-Location\Jump.Location.psd1"
 }
+else {
+    Write-Host(" ")
+    Write-Host("Can not load Jump-Location; appears System.Management.Automation.PSSnapIn is not supported in version $verMajor")
+}
+
 
 # ---------- Functions ------------------------------
 
