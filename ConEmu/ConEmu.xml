@@ -690,9 +690,9 @@
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Active" type="long" data="2"/>
 					<value name="Count" type="long" data="3"/>
-					<value name="Cmd1" type="string" data="-cur_console:f -cur_console:d:C:\Users\Charles.Bates powershell.exe"/>
-					<value name="Cmd2" type="string" data="&gt; -cur_console:b -cur_console:d:C:\Users\Charles.Bates powershell.exe"/>
-					<value name="Cmd3" type="string" data="-cur_console:b -cur_console:d:C:\Users\Charles.Bates powershell.exe"/>
+					<value name="Cmd1" type="string" data="-cur_console:f -cur_console:d:C:\Users\cbate powershell.exe"/>
+					<value name="Cmd2" type="string" data="&gt; -cur_console:b -cur_console:d:C:\Users\cbate powershell.exe"/>
+					<value name="Cmd3" type="string" data="-cur_console:b -cur_console:d:C:\Users\cbate powershell.exe"/>
 				</key>
 			</key>
 			<key name="Apps" modified="2019-06-11 11:40:58" build="180506">
