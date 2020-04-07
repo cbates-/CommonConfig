@@ -9,7 +9,6 @@
 [core]
 	autocrlf = true
 
-
 # Will these override what is in the commonConfig?  I hope so.
 [difftool]
    prompt = false
