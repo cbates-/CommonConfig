@@ -1,8 +1,10 @@
-
 // To view the default settings, hold "alt" while clicking on the "Settings" button.
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
+    "globals": {
+        "showTerminalTitleInTitlebar": true
+    },
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     // "defaultProfile": "{b040f410-a73e-48f1-aaea-8cb0c087a04d}",
     "alwaysShowTabs": true,
@@ -262,7 +264,7 @@
             "brightWhite": "#f5f5f5",
             "background": "#212121",
             "foreground": "#d0d0d0"
-          }
+        }
     ],
     // Add any keybinding overrides to this array.
     // To unbind a default keybinding, set the command to "unbound"
