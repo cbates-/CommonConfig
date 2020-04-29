@@ -3,7 +3,7 @@
 $deleteTime = -12;
 $limit = (Get-Date).AddDays($deleteTime)
 
-$t = Get-ChildItem -Path $pwd -filter "p*.txt" | Where-Object {$_.LastWriteTime -lt $limit} | Select -Expand Name
+$t = Get-ChildItem -Path $pwd -filter "p*.txt" | Where-Object {$_.LastWriteTime -lt $limit} | Select-Object -Expand Name
 $t
 
 foreach ($a in $t) { Write-Host "Name : $a" }

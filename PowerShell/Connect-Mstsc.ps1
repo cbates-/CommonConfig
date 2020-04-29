@@ -1,11 +1,11 @@
 ﻿function Connect-Mstsc {
-<#   
-.SYNOPSIS   
+<#
+.SYNOPSIS
 	Function to connect an RDP session without the password prompt
-    
-.DESCRIPTION 
+
+.DESCRIPTION
 	This function provides the functionality to start an RDP session without having to type in the password
-	
+
 .PARAMETER ComputerName
     This can be a single computername or an array of computers to which RDP session will be opened
 
@@ -15,7 +15,7 @@
 .PARAMETER Password
     The user name that will be used to authenticate
 
-.NOTES   
+.NOTES
     Name: Connect-Mstsc
     Author: Jaap Brasser
     DateUpdated: 2013-02-14
@@ -24,25 +24,25 @@
 .LINK
 http://www.jaapbrasser.com
 
-.EXAMPLE   
+.EXAMPLE
 	. .\Connect-Mstsc.ps1
-    
-Description 
------------     
+
+Description
+-----------
 This command dot sources the script to ensure the Connect-Mstsc function is available in your current PowerShell session
 
-.EXAMPLE   
+.EXAMPLE
 	Connect-Mstsc -ComputerName server01 -User contoso\jaapbrasser -Password supersecretpw
 
-Description 
------------     
+Description
+-----------
 A remote desktop session to server01 will be created using the credentials of contoso\jaapbrasser
 
-.EXAMPLE   
+.EXAMPLE
 	Connect-Mstsc server01,server02 contoso\jaapbrasser supersecretpw
 
-Description 
------------     
+Description
+-----------
 Two RDP session to server01 and server02 will be created using the credentials of contoso\jaapbrasser
 #>
     param (
@@ -50,11 +50,11 @@ Two RDP session to server01 and server02 will be created using the credentials o
         [Alias("CN")]
             [string[]]$ComputerName,
         [Parameter(Mandatory=$true,Position=1)]
-        [Alias("U")] 
+        [Alias("U")]
             [string]$User,
         [Parameter(Mandatory=$true,Position=2)]
-        [Alias("P")] 
-            [string]$Password
+        [Alias("P")]
+            [SecureString]$Password
     )
 
     process {
