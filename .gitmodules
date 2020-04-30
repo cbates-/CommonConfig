@@ -7,3 +7,6 @@
 [submodule "PowerShell/Modules/PSReadLine"]
 	path = PowerShell/Modules/PSReadLine
 	url = https://github.com/PowerShell/PSReadLine.git
+[submodule "PowerShell/Modules/Jump-Location"]
+	path = PowerShell/Modules/Jump-Location
+	url = https://github.com/tkellogg/Jump-Location.git
