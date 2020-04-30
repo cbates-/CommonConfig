@@ -11,7 +11,7 @@ Write-Host "Reading $fullPathIncFileName" -Foreground Cyan
 $env:Path += ";$env:_CommonConfig\bin"
 $env:Path += ";$env:_CommonConfig\powershell"
 $pp = select-string -pattern "vim81" -InputObject $env:Path
-if(($env:Path | Select-String "vim81") -eq $null) {
+if($null -eq ($env:Path | Select-String "vim81") ) {
 	$env:Path += ";C:\Program Files\Vim\vim81"
 }
 
@@ -56,13 +56,15 @@ Function Test-CommandExists
 #>
 
 # Add my shared PowerShell Modules dir to PSModulePath
-if((($env:PSModulePath | Select-String "CommonConfig\\PowerShell\\Modules") -eq $null) -and
-    (($env:PSModulePath | Select-String "OneDrive\\PowerShell\\Modules") -eq $null) ) {
+if(($null -eq ($env:PSModulePath | Select-String "CommonConfig\\PowerShell\\Modules") ) -and
+    ($null -eq ($env:PSModulePath | Select-String "OneDrive\\PowerShell\\Modules")) ) {
     Write-Host "Adding $env:_CommonConfig\PowerShell\Modules to PSModulePath"
-    if (($env:PSModulePath -ne $null) -and ($env:PSModulePath[$env:PSModulePath.Length - 1] -ne "")) {
+    if (($null -eq $env:PSModulePath) -and ($env:PSModulePath[$env:PSModulePath.Length - 1] -ne "")) {
         $env:PSModulePath += ";"
+        Write-Host "; to PSModulePath"
     }
     $env:PSModulePath += "$env:_CommonConfig\PowerShell\Modules"
+    Write-Host "$env:PSModulePath     +*+*+*+*+*+*+"
 }
 
 Write-Host "Trying to load PSFolderSize"
@@ -76,7 +78,7 @@ Import-Module "$env:_CommonConfig\PowerShell\Modules\PSFolderSize\PSFolderSize"
 
 $prof = [string]::Format("{0}\{1}", $env:USERPROFILE, "OneDrive");
 
-if (($env:PSScriptRoot -ne $null) -and ($env:PSScriptRoot[$env:PSScriptRoot.Length-1] -ne ";" ) ) {
+if (($null -ne $env:PSScriptRoot) -and ($env:PSScriptRoot[$env:PSScriptRoot.Length-1] -ne ";" ) ) {
     $env:PSScriptRoot += ";"
 }
 $env:PSScriptRoot += "$prof\PowerShell\Modules"
@@ -135,7 +137,7 @@ if ($host.name -eq 'ConsoleHost')
 
         "V-7-32-HXCHBA" {
             # Write-Host "V-7-32-HXCHBA!"
-            $procs = get-process | where { $_.ProcessName -like "PowerShell" };
+            $procs = get-process | Where-Object { $_.ProcessName -like "PowerShell" };
             # If this is the only instance of PS, start the clock.
             if( $procs -is [System.Diagnostics.Process] ) {
                 # . $env:_CommonConfig\PowerShell\ClockWidget3.ps1
@@ -220,7 +222,7 @@ if (!(Test-Path ~\PowerShell -PathType Container))
     New-Item ~\PowerShell -ItemType Directory
 }
 
-Import-Module CBUtil
+Import-Module $env:_CommonConfig\PowerShell\Modules\CBUtil\CBUtil.psd1
 
 
 if (Test-path $PoshHistoryPath)
@@ -245,7 +247,7 @@ function Clear-DirectoryStack {
     $cur = $pwd
     $last = ""
     $p = Pop-Location -StackName $stackName -PassThru
-    if ($p -eq $null) {
+    if ($null -eq $p) {
         return;
     }
     else {
@@ -270,8 +272,8 @@ function Export-CmdHistory {
     }
     Write-Host "exporting Cmd history"
     $d = Get-History
-    $d = $d | Select -Unique
-    $d = $d | Select -Last $MaximumHistoryCount
+    $d = $d | Select-Object -Unique
+    $d = $d | Select-Object -Last $MaximumHistoryCount
     $d
     $d | Export-CliXml -Path $PoshHistoryPath
     # Get-History -Count $MaximumHistoryCount | Group CommandLine |
@@ -282,8 +284,8 @@ Set-Alias exportCmdHistory Export-CmdHistory
 function Export-DirHistory{
     Write-Host "exporting dir history"
     $d = Get-Location -stack
-    $d = $d | Select -Unique
-    $d = $d | Select -Last $MaximumDirectoryCount
+    $d = $d | Select-Object-Unique
+    $d = $d | Select-Object -Last $MaximumDirectoryCount
     $d
     $d | Export-CliXml -Path $PoshDirectoryPath
 }
@@ -363,7 +365,7 @@ Set-Alias cpPwd Copy-Pwd
 
 # for git
 function psh() {
-    echo "Pushing..."
+    Write-Output "Pushing..."
         git push
 }
 
@@ -375,7 +377,7 @@ function gvimr {
     $arr = $args;
     $s = ". gvim.exe ";
     # $s = [string]::Format("{0}", $env:Editor)
-    $running = Get-Process | Where { $_.Name -Like "gvim*" };
+    $running = Get-Process | Where-Object { $_.Name -Like "gvim*" };
     if ([string]::IsNullOrEmpty($running) -eq $false) {
     }
 
@@ -403,30 +405,30 @@ Set-Alias code "C:\Users\cbate\AppData\Local\Programs\Microsoft VS Code"
 $env:PromptLength = 40
 
 
-# Load Jump-Location profile
-# Import-Module 'C:\Users\Charles\Documents\WindowsPowerShell\Jump-Location\Jump.Location.psd1'
-# Problems with something in Jump-Location with PowerShell Core 6.
-if ($verMajor -lt 6) {
-	Import-Module "$env:_CommonConfig\PowerShell\Modules\Jump-Location\Jump.Location.psd1"
-}
-else {
-    Write-Host(" ")
-    Write-Host("Can not load Jump-Location; appears System.Management.Automation.PSSnapIn is not supported in version $verMajor")
-}
+# # Load Jump-Location profile
+# # Import-Module 'C:\Users\Charles\Documents\WindowsPowerShell\Jump-Location\Jump.Location.psd1'
+# # Problems with something in Jump-Location with PowerShell Core 6.
+# if ($verMajor -lt 6) {
+# 	Import-Module "$env:_CommonConfig\PowerShell\Modules\Jump-Location\Jump.Location.psd1"
+# }
+# else {
+#     Write-Host(" ")
+#     Write-Host("Can not load Jump-Location; appears System.Management.Automation.PSSnapIn is not supported in version $verMajor")
+# }
 
 
 # ---------- Functions ------------------------------
 
 # Search recursively
 function Find-File { param ($fn = "*")
-    Get-ChildItem -Path . -Recurse | where { $_.Name -Like "*$fn*" }
+    Get-ChildItem -Path . -Recurse | Where-Object { $_.Name -Like "*$fn*" }
 }
 Set-Alias ffind Find-File
 
 
 
 # Launch Windows explorer in specified dir, default is PS's current dir
-function Launch-Explorer{ param ($dir = ".")
+function Start-Explorer{ param ($dir = ".")
     explorer.exe $dir
 }
 Set-Alias exp Launch-Explorer
@@ -436,7 +438,7 @@ function getOneCmdrV2Path {
     try {
         $ed = $env:OneCommanderPathV2
         # Is the env var set?
-        if ($ed -eq $null) {
+        if ($null -eq $ed) {
             Write-Host "OneCommanderPathV2 environment variable not set.";
             $ed = Read-Host "Enter OneCommanderV2 path (enter to quit)";
             if ([string]::IsNullOrEmpty($ed) -eq $true) {
@@ -456,7 +458,7 @@ function getOneCmdrV2Path {
 }
 
 
-function Launch-OneCommanderV2{ param ($dir = ".")
+function Start-OneCommanderV2{ param ($dir = ".")
     $gotOneCmdr = getOneCmdrV2Path;
 
     if($gotOneCmdr -eq $false) {
@@ -505,7 +507,7 @@ Update-FormatData -PrependPath $env:_CommonConfig\Powershell\myFilesystem.format
 function apropos {
     $descr = Get-Help *
         foreach ($ag in $args) {
-            $descr = $descr | Where {$_.Synopsis -like "*${ag}*"}
+            $descr = $descr | Where-Object {$_.Synopsis -like "*${ag}*"}
         }
     $descr | Format-Table -Auto
 }
