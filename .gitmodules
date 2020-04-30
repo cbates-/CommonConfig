@@ -4,3 +4,6 @@
 [submodule "PowerShell/Modules/psget"]
 	path = PowerShell/Modules/psget
 	url = https://github.com/psget/psget.git
+[submodule "PowerShell/Modules/PSReadLine"]
+	path = PowerShell/Modules/PSReadLine
+	url = https://github.com/PowerShell/PSReadLine.git
