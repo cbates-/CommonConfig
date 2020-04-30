@@ -431,7 +431,7 @@ Set-Alias ffind Find-File
 function Start-Explorer{ param ($dir = ".")
     explorer.exe $dir
 }
-Set-Alias exp Launch-Explorer
+Set-Alias exp Start-Explorer
 
 function getOneCmdrV2Path {
     [bool]$success = $true;
