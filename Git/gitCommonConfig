@@ -23,7 +23,8 @@
     lg7 = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --since='7 days ago'
     lga = log --graph --oneline --all --decorate
     lga7 = log --graph --oneline --all --decorate --since='7 days ago'
-    stat = status -s
+    stat = status
+    stats = status -s
     type = cat-file -t
 	undo-commit = reset --soft HEAD^
 
