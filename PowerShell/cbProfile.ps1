@@ -103,7 +103,7 @@ if ($verMajor -lt 6) {
 . $env:_CommonConfig\PowerShell\msbld12.ps1
 #
 # Customization for PSReadLine
-. $env:_CommonConfig\PowerShell\psreadline_cb.ps1
+# . $env:_CommonConfig\PowerShell\psreadline_cb.ps1
 
 if((Test-Path $env:_CommonConfig\PowerShell\Which.ps1) -eq $true) {
 	. $env:_CommonConfig\PowerShell\Which.ps1
