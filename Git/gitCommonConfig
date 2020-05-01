@@ -3,8 +3,8 @@
 	autocrlf = true
 	safecrlf = false
 	# C:\Program Files (x86)\Vim\vim81
-        # editor = 'C:/Program Files/Vim/vim74/gvim.exe' 
-        editor = 'gvim.exe' 
+        # editor = 'C:/Program Files/Vim/vim74/gvim.exe'
+        editor = 'gvim.exe'
 	excludesfile = %_CommonConfig%/git/.gitignore
 
 [gui]
@@ -17,13 +17,13 @@
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
     l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'lga = log --graph --oneline --all --decorate
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    # lg3 = log --graph --oneline --decorate --since='3 days ago' 
+    # lg3 = log --graph --oneline --decorate --since='3 days ago'
     lg3 = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --since='3 days ago'
-    # lg7 = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --oneline --decorate --since='7 days ago' 
+    # lg7 = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --oneline --decorate --since='7 days ago'
     lg7 = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --since='7 days ago'
-    lga = log --graph --oneline --all --decorate 
-    lga7 = log --graph --oneline --all --decorate --since='7 days ago' 
-    stat = status
+    lga = log --graph --oneline --all --decorate
+    lga7 = log --graph --oneline --all --decorate --since='7 days ago'
+    stat = status -s
     type = cat-file -t
 	undo-commit = reset --soft HEAD^
 
@@ -45,47 +45,47 @@
 [credential]
 	helper = store
 
-# CodeCompare setup copied from 
+# CodeCompare setup copied from
 # https://www.devart.com/codecompare/integration_git.html
 # [difftool "codecompare"]
-#     cmd = 'C:\\Program Files\\Devart\\Code Compare\\codecompare.exe' -W \"$LOCAL\" \"$REMOTE\" 
+#     cmd = 'C:\\Program Files\\Devart\\Code Compare\\codecompare.exe' -W \"$LOCAL\" \"$REMOTE\"
 #     renames = true
-#  
+#
 # [diff]
 #     tool = codecompare
 #     guitool = codecompare
-#  
+#
 # [mergetool "codecompare"]
-#     cmd = 'C:\\Program Files\\Devart\\Code Compare\\codemerge.exe' -MF=\"$LOCAL\" -TF=\"$REMOTE\" -BF=\"$BASE\" -RF=\"$MERGED\" 
+#     cmd = 'C:\\Program Files\\Devart\\Code Compare\\codemerge.exe' -MF=\"$LOCAL\" -TF=\"$REMOTE\" -BF=\"$BASE\" -RF=\"$MERGED\"
 #     trustExitCode = true
-#  
+#
 # [mergetool]
 #     keepBackup = false
-#  
+#
 # [merge]
 #     tool = codecompare
 #     guitool = codecompare
-# 
+#
 # [push]
 # 	default = matching
 
 # BeyondCompare
 [difftool "beyondcompare"]
-    cmd = 'C:\\Program Files\\Beyond Compare 4\\Bcompare.exe' -W \"$LOCAL\" \"$REMOTE\" 
+    cmd = 'C:\\Program Files\\Beyond Compare 4\\Bcompare.exe' -W \"$LOCAL\" \"$REMOTE\"
     renames = true
 	prompt = false
- 
+
 [diff]
     tool = beyondcompare
     guitool = beyondcompare
- 
+
 [mergetool "beyondcompare"]
-    cmd = 'C:\\Program Files\\Beyond Compare 4\\Bcompare.exe' -MF=\"$LOCAL\" -TF=\"$REMOTE\" -BF=\"$BASE\" -RF=\"$MERGED\" 
+    cmd = 'C:\\Program Files\\Beyond Compare 4\\Bcompare.exe' -MF=\"$LOCAL\" -TF=\"$REMOTE\" -BF=\"$BASE\" -RF=\"$MERGED\"
     trustExitCode = true
- 
+
 [mergetool]
     keepBackup = false
- 
+
 [merge]
     tool = beyondcompare
     guitool = beyondcompare
