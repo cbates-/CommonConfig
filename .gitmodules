@@ -1,0 +1,12 @@
+[submodule "PowerShell/Modules/PSFolderSize"]
+	path = PowerShell/Modules/PSFolderSize
+	url = https://github.com/cbates-/PSFolderSize.git
+[submodule "PowerShell/Modules/psget"]
+	path = PowerShell/Modules/psget
+	url = https://github.com/psget/psget.git
+[submodule "PowerShell/Modules/PSReadLine"]
+	path = PowerShell/Modules/PSReadLine
+	url = https://github.com/PowerShell/PSReadLine.git
+[submodule "PowerShell/Modules/Jump-Location"]
+	path = PowerShell/Modules/Jump-Location
+	url = https://github.com/tkellogg/Jump-Location.git

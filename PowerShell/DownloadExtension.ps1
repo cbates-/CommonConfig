@@ -22,7 +22,7 @@ if((Test-Path "$env:_CommonConfig\Downloads") -eq $false) {
 }
 
 
-$dict.Keys | % { "key = $_ , value = " + $dict.Item($_) }
+$dict.Keys | ForEach-Object { "key = $_ , value = " + $dict.Item($_) }
 
 # $client.DownloadFile("http://thewindowsclub.thewindowsclub.netdna-cdn.com/wp-content/upload/2016/Windows-Explorer-Process-Task-Manager-600x405.png",
 # "C:\Users\Digdarshan\Pictures\TWC\Task-Manager.png")

@@ -1,8 +1,10 @@
 
 
+$fullPathIncFileName = $MyInvocation.MyCommand.Definition
+Write-Host "**** Reading $fullPathIncFileName ****" -Foreground Cyan
 
 # From : SamplePSReadlineProfile.ps1
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd 
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
@@ -53,7 +55,7 @@ Set-PSReadlineKeyHandler -Key '"',"'" `
     # $line = $null
     # $cursor = $null
     # [PSConsoleUtilities.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
-    # [PSConsoleUtilities.PSConsoleReadLine]::SetCursorPosition($cursor - 1)        
+    # [PSConsoleUtilities.PSConsoleReadLine]::SetCursorPosition($cursor - 1)
 # }
 
 # Set-PSReadlineKeyHandler -Key '}' `
@@ -80,7 +82,7 @@ Set-PSReadlineKeyHandler -Key '"',"'" `
 #
 # Sometimes you enter a command but realize you forgot to do something else first.
 # This binding will let you save that command in the history so you can recall it,
-# but it doesn't actually execute.  
+# but it doesn't actually execute.
 # CB: This saves it in PSReadline's history, apparently.  Up arrow will find it, but not get-history.
 # It also clears the line with RevertLine so the
 # undo stack is reset - though redo will still reconstruct the command line.

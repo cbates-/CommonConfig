@@ -9,7 +9,9 @@
 [core]
 	autocrlf = true
 
-# Will these override what is in the commonConfig?  I hope so.
+#
+# These settings will override what is in the commonConfig.
+#
 [difftool]
    prompt = false
 
@@ -25,6 +27,7 @@ tool = bc4
 [alias]
 	st = status
 	stat = status
+	stats = status -s
 [winUpdater]
 	recentlySeenVersion = 2.25.0.windows.1
 [filter "lfs"]

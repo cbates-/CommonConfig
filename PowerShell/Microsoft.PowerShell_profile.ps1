@@ -1,10 +1,10 @@
 ﻿
-# 
+#
 # This file should be copied to the location specified by $profile.
 # This file should contain computer- or location-specific items.
 #
-# It calls  
-#    . $env:_CommonConfig\PowerShell\cbprofile[ISE].ps1       
+# It calls
+#    . $env:_CommonConfig\PowerShell\cbprofile[ISE].ps1
 # for the shared config.
 #
 
@@ -46,21 +46,21 @@ $env:OneCommanderPathV2 = "C:\Users\Charles\AppData\Local\Apps\2.0\535ZG6L3.E92\
 # Call the shared config.
 # When should the shared profile be loaded?
 switch ($host.Name) {
-    'ConsoleHost' 
-    { 
+    'ConsoleHost'
+    {
         # Write-Host "env:_skdrive: $env:_CommonConfig"
-        # . $env:_CommonConfig\PowerShell\Microsoft.PowerShell_profile.ps1       
-		if((Test-Path $env:_CommonConfig\PowerShell\cbprofile.ps1) -eq $true) {       
-			. $env:_CommonConfig\PowerShell\cbprofile.ps1       
+        # . $env:_CommonConfig\PowerShell\Microsoft.PowerShell_profile.ps1
+		if((Test-Path $env:_CommonConfig\PowerShell\cbprofile.ps1) -eq $true) {
+			. $env:_CommonConfig\PowerShell\cbprofile.ps1
 		}
     }
-    'Windows PowerShell ISE Host' 
-    { 
-        Import-Module FunctionExplorer 
-        # Import-Module VariableExplorer 
-        # . $env:_CommonConfig\PowerShell\Microsoft.PowerShellISE_profile.ps1       
-		if((Test-Path $env:_CommonConfig\PowerShell\cbprofileISE.ps1) -eq $true) {       
-			. $env:_CommonConfig\PowerShell\cbprofileISE.ps1       
+    'Windows PowerShell ISE Host'
+    {
+        Import-Module FunctionExplorer
+        # Import-Module VariableExplorer
+        # . $env:_CommonConfig\PowerShell\Microsoft.PowerShellISE_profile.ps1
+		if((Test-Path $env:_CommonConfig\PowerShell\cbprofileISE.ps1) -eq $true) {
+			. $env:_CommonConfig\PowerShell\cbprofileISE.ps1
 		}
     }
 }
@@ -69,15 +69,11 @@ switch ($host.Name) {
 Set-Alias "Code" "C:\Users\cbate\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 # Set-Alias "Code" "C:\Users\CB\AppData\Local\Programs\Microsoft VS Code\code.exe"
 
-#[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
+#[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 #
 
 # Remind me about aliases/functions
-#[System.Windows.Forms.MessageBox]::Show("Remember 'rds' and 'nbs' as dir shortcuts." , "PowerShell Reminder") 
-
-
-# Load Jump-Location profile
-# Import-Module 'C:\ProgramData\chocolatey\lib\Jump-Location\tools\Jump.Location.psd1'
+#[System.Windows.Forms.MessageBox]::Show("Remember 'rds' and 'nbs' as dir shortcuts." , "PowerShell Reminder")
 
 
 # Chocolatey profile
