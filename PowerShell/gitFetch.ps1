@@ -46,17 +46,17 @@ function getGitStatus {
     catch {}
 }
 
-    $dir = dir $pwd | ?{$_.PSISContainer}
+    $dirs = dir $pwd | ?{$_.PSISContainer}
     $start = $pwd
     $fn = $env:temp
     $fn += '\gitStat'
 
     # Write-Host $start
-    getGitStatus $start $fn 
+    getGitStatus $start $fn
 
-    foreach ($d in $dir) {
+    foreach ($d in $dirs) {
         # Write-Host $d
-        getGitStatus $d $fn 
+        getGitStatus $d $fn
         cd $start
     }
 
