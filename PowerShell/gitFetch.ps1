@@ -15,21 +15,21 @@ function getGitStatus {
             $msg = ""
             Write-Host $d -Foregroundcolor Yellow;
             $ss = Select-String -Path $fn -SimpleMatch "Changes to be committed";
-            if($ss -ne $null) {
+            if($null -eq $ss) {
                 # Write-Host "`t" -nonewline;
                 $msg += [string]::Format("`t{0} has staged files", $pwd);
                 $msg += "`r`n";
                 # Write-Host $msg
             }
             $ss = Select-String -Path $fn -SimpleMatch "Changes not staged for commit";
-            if($ss -ne $null) {
+            if($null -eq $ss) {
                 # Write-Host "`t" -nonewline;
                 $msg += [string]::Format("`t{0} has modified files", $pwd);
                 $msg += "`r`n";
                 # Write-Host $msg
             }
             $ss = Select-String -Path $fn -SimpleMatch "Untracked files";
-            if($ss -ne $null) {
+            if($null -eq $ss) {
                 # Write-Host "`t" -nonewline;
                 $msg += [string]::Format("`t{0} has untracked files", $pwd);
                 $msg += "`r`n";
