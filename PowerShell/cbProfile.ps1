@@ -69,8 +69,8 @@ if(($null -eq ($env:PSModulePath | Select-String "CommonConfig\\PowerShell\\Modu
 
 Write-Host "Trying to load PSFolderSize"
 Write-Host "CWD: " + $PWD.ProviderPath
-# Import-Module "..\PSFolderSize\PSFolderSize\PSFolderSize.psd1"
-Import-Module "$env:_CommonConfig\PowerShell\Modules\PSFolderSize\PSFolderSize"
+# Import-Module ".\PSFolderSize\PSFolderSize.psd1"
+Import-Module "$env:_CommonConfig\PSFolderSize\PSFolderSize"
 
 
 # ShowUI provides access to WPF things.  Used by my DirMgr.
