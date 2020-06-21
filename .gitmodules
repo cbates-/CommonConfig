@@ -1,6 +1,3 @@
-[submodule "PowerShell/Modules/PSFolderSize"]
-	path = PowerShell/Modules/PSFolderSize
-	url = https://github.com/cbates-/PSFolderSize.git
 [submodule "PowerShell/Modules/psget"]
 	path = PowerShell/Modules/psget
 	url = https://github.com/psget/psget.git
