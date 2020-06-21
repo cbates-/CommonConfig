@@ -4,3 +4,6 @@
 [submodule "PSFolderSize"]
 	path = PSFolderSize
 	url = https://github.com/gngrninja/PSFolderSize.git
+[submodule "posh-git"]
+	path = posh-git
+	url = https://github.com/dahlbyk/posh-git.git
