@@ -175,25 +175,8 @@ if ($host.name -eq 'ConsoleHost')
 #
 . $env:_CommonConfig\PowerShell\ShortenPath.ps1
 
-# Load posh-git example profile
-if( $env:COMPUTERNAME -ne "V-7-32-HXCHBA") {
     Write-Host "Loading posh-git"
     . $env:_CommonConfig\posh-git\profile.example.ps1
-}
-else {
-    # Re-enable posh-git for work VM, for now.  Isolating it like this makes it easy to disable.
-	Write-Host "Loading posh-git"
-	. $env:_CommonConfig\posh-git\profile.example.ps1
-}
-
-<#
-switch -wildcard ($env:COMPUTERNAME) {
-    "V-7-32-HXCHBA" { . $env:_CommonConfig\posh-git\profile.example.ps1 }
-
-    "*" { . $env:_CommonConfig\posh-git\profile.example.ps1  }
-}
-#>
-
 
 #
 # This has to be last -- it adds to functionality set by others

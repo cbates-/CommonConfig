@@ -5,7 +5,7 @@
 #
 $curPrompt = cat function:\prompt
 
-# Write-Host "In cbPrompt" -Foreground Red
+Write-Host "In cbPrompt" -Foreground Red
 
 $s = "function global:prompt {"
 $s += "`n"
@@ -40,7 +40,7 @@ $s += "`n"
 # $s += "`n"
 # $s += "}"
 # $s += "`n"
-# 
+#
 # $s += "finally {"
 $s += "`n"
 $s += '$host.ui.RawUI.WindowTitle = ShortenPath 32'
