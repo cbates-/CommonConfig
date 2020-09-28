@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AutoTextDataItems xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/BG8.Supercharger.Features.AutoText.Data">
+  <CPPItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <CSharpItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>cs</d2p1:Key>
+      <d2p1:Value>case ..SB..WHEN_HERE..SE..: break;</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>gs</d2p1:Key>
+      <d2p1:Value>{ get; set; }</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>ex</d2p1:Key>
+      <d2p1:Value>catch (Exception ex) { Xout.LogExc(..SB..EXCEPTION_ID_HERE..SE.., ex); }</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>sn</d2p1:Key>
+      <d2p1:Value>string.IsNullOrEmpty(..C..)</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>se</d2p1:Key>
+      <d2p1:Value>string.Empty</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>touch</d2p1:Key>
+      <d2p1:Value>// by ..U.. on ..D.. at ..T..</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>xll</d2p1:Key>
+      <d2p1:Value>Xout.LogInf("..SN.....PN.....TN.....MN..");</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>xl</d2p1:Key>
+      <d2p1:Value>Xout.LogInf("..C..");</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>id</d2p1:Key>
+      <d2p1:Value>#if DEBUG</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>act</d2p1:Key>
+      <d2p1:Value>Action&lt;..P1:Parameter1 type..&gt; ..P2:Action name.. = (..P1.. ..P3:Parameter1 name..) =&gt;
+{
+};</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>func</d2p1:Key>
+      <d2p1:Value>Func&lt;..P1:Param1 type.., ..P2:Return type..&gt; ..P3:Func name.. = (..P1.. ..P4:Param1 name..) =&gt;
+{
+	..P2.. result;
+	
+	
+	return result;
+};</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>eva</d2p1:Key>
+      <d2p1:Value>#region ..P1:Event name.. Event
+internal class ..P1..EventArgs : EventArgs
+{
+	public ..P2:Param 1 type.. ..P3:Param1 name.. { get; private set; }
+
+	public ..P1..EventArgs(..P2.. ..P4:Param1 arg name..) { ..P3.. = ..P4..; }
+}
+public event EventHandler&lt;..P1..EventArgs&gt; ..P1..;
+public void On..P1..(..P2.. ..P4..)
+{
+	EventHandler&lt;..P1..EventArgs&gt; t = ..P1..;
+	t?.Invoke(this, new ..P1..EventArgs(..P4..));
+}
+#endregion</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>ev</d2p1:Key>
+      <d2p1:Value>#region ..P1:Event name.. Event
+public event EventHandler ..P1..;
+public void On..P1..()
+{
+	EventHandler t = ..P1..;
+	t?.Invoke(this, new EventArgs());
+}
+#endregion</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>tc</d2p1:Key>
+      <d2p1:Value>try
+{
+	..C..
+}
+catch { }</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>tcx</d2p1:Key>
+      <d2p1:Value>try
+{
+	..C..
+}
+catch (Exception ex) { }</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+  </CSharpItems>
+  <GenericItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>mb</d2p1:Key>
+      <d2p1:Value>System.Windows.MessageBox.Show("..C..");</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+  </GenericItems>
+  <HTMLItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <JSItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <VBasicItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <XAMLItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>gcd</d2p1:Key>
+      <d2p1:Value>&lt;Grid.ColumnDefinitions&gt;
+	&lt;ColumnDefinition Width="*" /&gt;
+&lt;/Grid.ColumnDefinitions&gt;</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>grd</d2p1:Key>
+      <d2p1:Value>&lt;Grid.RowDefinitions&gt;
+	&lt;RowDefinition Height="Auto" /&gt;
+&lt;/Grid.RowDefinitions&gt;</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>set</d2p1:Key>
+      <d2p1:Value>&lt;Setter Property="..C.." TargetName="" Value="" /&gt;</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>cd</d2p1:Key>
+      <d2p1:Value>&lt;ColumnDefinition Width="*" /&gt;</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>rd</d2p1:Key>
+      <d2p1:Value>&lt;RowDefinition Height="Auto" /&gt;</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+  </XAMLItems>
+  <XMLItems xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+</AutoTextDataItems>
