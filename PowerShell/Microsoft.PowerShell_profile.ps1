@@ -48,20 +48,20 @@ $env:OneCommanderPathV2 = "C:\Users\Charles\AppData\Local\Apps\2.0\535ZG6L3.E92\
 switch ($host.Name) {
     'ConsoleHost'
     {
-        # Write-Host "env:_skdrive: $env:_CommonConfig"
+        # Write-Host "env:_CommonConfig: $env:_CommonConfig"
         # . $env:_CommonConfig\PowerShell\Microsoft.PowerShell_profile.ps1
-		if((Test-Path $env:_CommonConfig\PowerShell\cbprofile.ps1) -eq $true) {
-			. $env:_CommonConfig\PowerShell\cbprofile.ps1
-		}
+      if((Test-Path $env:_CommonConfig\PowerShell\cbprofile.ps1) -eq $true) {
+        . $env:_CommonConfig\PowerShell\cbprofile.ps1
+      }
     }
     'Windows PowerShell ISE Host'
     {
         Import-Module FunctionExplorer
         # Import-Module VariableExplorer
         # . $env:_CommonConfig\PowerShell\Microsoft.PowerShellISE_profile.ps1
-		if((Test-Path $env:_CommonConfig\PowerShell\cbprofileISE.ps1) -eq $true) {
-			. $env:_CommonConfig\PowerShell\cbprofileISE.ps1
-		}
+      if((Test-Path $env:_CommonConfig\PowerShell\cbprofileISE.ps1) -eq $true) {
+        . $env:_CommonConfig\PowerShell\cbprofileISE.ps1
+      }
     }
 }
 
@@ -81,3 +81,5 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+Set-Location $env:_CommonConfig
