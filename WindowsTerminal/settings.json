@@ -161,6 +161,24 @@
                 "useAcrylic": true
             },
             {
+                "acrylicOpacity": 0.85000002384185791,
+                "closeOnExit": "graceful",
+                "colorScheme": "Afterglow",
+                "commandline": "\"C:\\Program Files\\Git\\git-bash.exe\" --cd-to-home",
+                "cursorColor": "#FFC600",
+                "cursorShape": "vintage",
+                "fontFace": "Cascadia Code PL",
+                "fontSize": 10,
+                "guid": "{909322fb-6db2-4efb-832c-a8f4d733961f}",
+                "historySize": 9001,
+                "name": "Git Bash Afterglow",
+                "padding": "0, 0, 0, 0",
+                "snapOnInput": true,
+                "startingDirectory": "C:/Users/cbate/OneDrive/CommonConfig",
+                "tabTitle": "Git Bash",
+                "useAcrylic": true
+            },
+            {
                 "commandline": "cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
