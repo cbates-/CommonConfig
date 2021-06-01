@@ -7,7 +7,7 @@
 # Revisions:
 # - 26 Mar 2015 : Re-sync with NBAUtil
 # - 25 Feb 2015 : Re-sync with NBAUtil.
-# - 13 Jan 2015 : Some scriptcop cleanup 
+# - 13 Jan 2015 : Some scriptcop cleanup
 # - 5 Dec 2014  : Escape '{' and '}' characters for SendKeys() in Edit-CmdFromHistory.
 # - 17 Nov      : Added Edit-CmdFromHistory, alias 'ech'
 #                 Added Run-CmdFromHistory, alias 'rch'
@@ -17,9 +17,9 @@
 #
 
 $fullpathincfilename = $myinvocation.mycommand.definition
-write-host "reading $fullpathincfilename" -foreground green
+Write-Host "*** Reading $fullpathincfilename" -foreground green
 
-# 
+#
 # Check for existence of $env:Editor
 # If not set, prompt for exe
 # Return:
@@ -51,7 +51,7 @@ function getEditor {
 }
 
 
-# 
+#
 # Check for existence of $env:CompareTool
 # If not set, prompt for exe
 # Return:
@@ -84,7 +84,7 @@ function getCompareTool {
 
 
 <#
-    .SYNOPSIS 
+    .SYNOPSIS
     Use the compare utility specified by $env:CompareTool to compare two files or folders.
 
     .EXAMPLE
@@ -100,10 +100,10 @@ function getCompareTool {
      Note If $env:CompareTool is not set, the user will be prompted.
 
 #>
-function Compare-Files { 
+function Compare-Files {
     param (
         [Parameter(Mandatory=$true)]
-        $Path1, 
+        $Path1,
         [Parameter(Mandatory=$true)]
         $Path2
     )
@@ -184,13 +184,13 @@ function Edit-TempCopy {
     }
 }
 
-# 
+#
 # Helper function that uses $env:Editor variable
 #
 function Edit-InPlace {
     param (
             [Parameter(ValueFromPipeline=$true, Mandatory=$true)]
-            [string] $Filename 
+            [string] $Filename
           )
     process {
         try {
@@ -230,7 +230,7 @@ function pushCurDir {
     Push-Location $p.ProviderPath
 }
 
-# 
+#
 # To handle output from something like Get-Process:
 # (Get-Process | Out-String) | Edit-PipedInput
 #
@@ -238,7 +238,7 @@ function pushCurDir {
 function Edit-PipedInput {
     param (
             [Parameter(ValueFromPipeline=$true, Mandatory=$true)]
-            [string] $Txt 
+            [string] $Txt
           )
     process {
         try {
@@ -268,7 +268,7 @@ function Edit-PipedInput {
     }
 }
 
-# 
+#
 # From:  http://blogs.technet.com/b/heyscriptingguy/archive/2013/02/19/use-a-powershell-function-to-see-if-a-command-exists.aspx
 #
 Function Test-CommandExists
@@ -302,17 +302,17 @@ Function Test-CommandExists
 # From:  http://msmvps.com/blogs/richardsiddaway/archive/2011/05/13/powershell-module-construction.aspx
 #
 
-function Which-Exe { 
-    [CmdletBinding()] 
-        param ( 
+function Which-Exe {
+    [CmdletBinding()]
+        param (
           [Parameter(Mandatory=$true)]
           [string]$ExeName
-        ) 
+        )
         BEGIN
         {
             $path = $env:Path;
             $found = [string]::Empty;
-        }#begin 
+        }#begin
 
         PROCESS
         {
@@ -334,12 +334,12 @@ function Which-Exe {
             else {
                 Write-Host "$ExeName not found in path";
             }
-        }#process 
+        }#process
 
         END
         {}#end
 
-<# 
+<#
         .SYNOPSIS
         Determine whether the filename passed in exists in a dir in the system path.
 
@@ -369,11 +369,11 @@ function Which-Exe {
 #>
 }
 
-function Poll-Tail { 
+function Poll-Tail {
     [CmdletBinding()]
     param (
             [Parameter(Mandatory=$true,Position=0)]
-            [string] $Filename, 
+            [string] $Filename,
             [Parameter(Mandatory=$false,Position=1)]
             [Int32] $Cnt = 30,
             [Parameter(Mandatory=$false,Position=2)]
@@ -406,7 +406,7 @@ function Poll-Tail {
             # $new = Get-Content $fn -Tail $cnt
             $new = [IO.File]::ReadAllText($fn);
             $new2 = @()
-            $new2 = $new -split "`r`n"  
+            $new2 = $new -split "`r`n"
             # $new2 = Split-String -Separator "`r`n" -Input $new -RemoveEmptyStrings
             $new = $new2 | Select -Last $cnt
             $new = $new | Where { $_.Length -gt 0 }
@@ -419,12 +419,12 @@ function Poll-Tail {
             Start-Sleep -Seconds $Interval
         } until ($false)
 <#
-    .SYNOPSIS 
+    .SYNOPSIS
       Displays last $Cnt lines of $Filename, every $Interval seconds
       Ctrl-C to stop polling.
 
     .EXAMPLE
-     pollTail jnk.log 
+     pollTail jnk.log
      Get the last 30 lines of jnk.txt every 30 seconds (default count and interval)
 
     .EXAMPLE
@@ -465,7 +465,7 @@ function Run-CmdFromHistory {
     }
 
 <#
-    .SYNOPSIS 
+    .SYNOPSIS
     A concatenation of Get-History/Invoke-History in one command.
     Display last CmdCnt number of commands.  Allow user to select by number and run.
 
@@ -482,7 +482,7 @@ function Run-CmdFromHistory {
 Set-Alias rch Run-CmdFromHistory -Scope "Global"
 
 
-# 
+#
 # SendKeys interprets '{' and '}' as enclosing special names ("{Enter}", for example).
 # Surround them in '{}' to make them literal again.
 #
@@ -514,22 +514,22 @@ function Edit-CmdFromHistory {
         $wshell = New-Object -ComObject wscript.shell;
 
         $result = $wshell.AppActivate($title)
-        
+
         # if($result -eq $true) {
         # $keys = $c.CommandLine;
         $keys = Handle-BracesForSendKeys $c.CommandLine;
 
         Sleep .5
-        $wshell.SendKeys($keys) 
+        $wshell.SendKeys($keys)
         # }
     }
     else {
         "Canceled.";
     }
 <#
-    .SYNOPSIS 
+    .SYNOPSIS
     A concatenation of Get-History/Invoke-History in one command, but allows editing of command before executing.
-    Display last CmdCnt number of commands.  Allows user to select by number and pastes the command on the command line for editing.  
+    Display last CmdCnt number of commands.  Allows user to select by number and pastes the command on the command line for editing.
 
     .EXAMPLE
 
@@ -670,8 +670,8 @@ Function Prompt-StringResponse {
     $result
 }
 
-function Find-Text { 
-    param( 
+function Find-Text {
+    param(
             [Parameter(Mandatory=$true)]
             $Text,
 
@@ -682,7 +682,7 @@ function Find-Text {
             $Recurse=$false,
             [Parameter(Mandatory=$false)]
             $AllMatches=$True
-<#           
+<#
             [Parameter(Mandatory=$false)]
             $FnOnly=$false,
 #>
@@ -694,7 +694,7 @@ function Find-Text {
         $s =  [string]::Format("Text: {0}  Filename: {1}, recurse: {2}", $Text, $Filename, $Recurse)
         Write-Host $s -ForegroundColor Yellow
 
-        # Select-String -Path E:\Data\PSExtras\*.ps1 -Pattern 'write-host' -List | select filename, line –Unique
+        # Select-String -Path E:\Data\PSExtras\*.ps1 -Pattern 'write-host' -List | select filename, line ï¿½Unique
 
         if($Recurse) {
             # Write-Host "Searching recursively"
@@ -705,7 +705,7 @@ function Find-Text {
                 Get-ChildItem -File -Recurse -Filter $Filename | Select-String $Text -List
             }
             # Select-String -Path $pwd -Include $Filename -Pattern $Text -List | select filename, line -Unique
-            # $dirs = Get-ChildItem -Directory -Recurse 
+            # $dirs = Get-ChildItem -Directory -Recurse
             # foreach ($d in $dirs) {
                 # $p = Join-Path $d.FullName $Filename;
                 # $s = Select-String -Path $p -Pattern $Text -List | select filename, line -Unique
